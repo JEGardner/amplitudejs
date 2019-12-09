@@ -97,13 +97,8 @@ let Core = (function() {
     */
     let playPromise = config.audio.play();
 
-    if( playPromise !== undefined ){
-      playPromise.then( _ => {
-
-      })
-      .catch( error => {
-
-      });
+    if (playPromise !== undefined) {
+      playPromise.then(_ => {}).catch(error => {});
     }
     config.audio.play();
     config.audio.playbackRate = config.playback_speed;
@@ -239,24 +234,24 @@ let Core = (function() {
 			see if the seconds will work. We only bind the event handler
 			once and remove it once it's fired.
 		*/
-    config.audio.addEventListener(
-      "canplaythrough",
-      function() {
-        /*
+    // config.audio.addEventListener(
+    //   "canplaythrough",
+    //   function() {
+    /*
 				If the active song duration is greater than or equal to the
 				amount of seconds the user wants to skip to and the seconds
 				is greater than 0, we skip to the seconds defined.
 			*/
-        if (config.audio.duration >= seconds && seconds > 0) {
-          config.audio.currentTime = seconds;
-        } else {
-          Debug.writeMessage(
-            "Amplitude can't skip to a location greater than the duration of the audio or less than 0"
-          );
-        }
-      },
-      { once: true }
-    );
+    if (config.audio.duration >= seconds && seconds > 0) {
+      config.audio.currentTime = seconds;
+    } else {
+      Debug.writeMessage(
+        "Amplitude can't skip to a location greater than the duration of the audio or less than 0"
+      );
+    }
+    // },
+    //   { once: true }
+    // );
   }
 
   /**

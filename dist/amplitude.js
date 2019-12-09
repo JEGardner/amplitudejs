@@ -476,7 +476,7 @@ var Core = function () {
     see if the seconds will work. We only bind the event handler
     once and remove it once it's fired.
     */
-    // _config2.default.audio.addEventListener("canplaythrough", function () {
+    _config2.default.audio.addEventListener("canplaythrough", function () {
       /*
       If the active song duration is greater than or equal to the
       amount of seconds the user wants to skip to and the seconds
@@ -487,7 +487,7 @@ var Core = function () {
       } else {
         _debug2.default.writeMessage("Amplitude can't skip to a location greater than the duration of the audio or less than 0");
       }
-    // }, { once: true });
+    }, { once: true });
   }
 
   /**
