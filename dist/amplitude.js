@@ -483,11 +483,13 @@ var Core = function () {
     If the active song duration is greater than or equal to the
     amount of seconds the user wants to skip to and the seconds
     is greater than 0, we skip to the seconds defined.
-    */
-    if (_config2.default.audio.duration >= seconds && seconds > 0) {
+      */
+    if (seconds <= 0) {
+      _config2.default.audio.currentTime = 0;
+    } else if (_config2.default.audio.duration >= seconds) {
       _config2.default.audio.currentTime = seconds;
     } else {
-      _debug2.default.writeMessage("Amplitude can't skip to a location greater than the duration of the audio or less than 0");
+      _debug2.default.writeMessage("Amplitude can't skip to a location greater than the duration of the audio");
     }
     // },
     //   { once: true }

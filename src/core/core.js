@@ -241,12 +241,14 @@ let Core = (function() {
 				If the active song duration is greater than or equal to the
 				amount of seconds the user wants to skip to and the seconds
 				is greater than 0, we skip to the seconds defined.
-			*/
-    if (config.audio.duration >= seconds && seconds > 0) {
+      */
+    if (seconds <= 0) {
+      config.audio.currentTime = 0;
+    } else if (config.audio.duration >= seconds) {
       config.audio.currentTime = seconds;
     } else {
       Debug.writeMessage(
-        "Amplitude can't skip to a location greater than the duration of the audio or less than 0"
+        "Amplitude can't skip to a location greater than the duration of the audio"
       );
     }
     // },
