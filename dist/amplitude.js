@@ -10331,9 +10331,9 @@ var Amplitude = function () {
 
   /**
    * Sets the playback speed
-   * 
+   *
    * Public Accessor: Amplitude.setPlaybackSpeed( speed )
-   * 
+   *
    * @access public
    */
   function setPlaybackSpeed(speed) {
@@ -11197,7 +11197,7 @@ var Amplitude = function () {
         Skip to the location in the song.
       */
       _core2.default.skipToLocation(seconds);
-    } else {
+    } else if (songIndex != null) {
       /*
         Changes the song to where it's being skipped and then
         play the song.
@@ -11211,6 +11211,11 @@ var Amplitude = function () {
       _playPauseElements2.default.syncGlobal();
       _playPauseElements2.default.syncSong();
 
+      /*
+        Skip to the location in the song.
+      */
+      _core2.default.skipToLocation(seconds);
+    } else {
       /*
         Skip to the location in the song.
       */
@@ -11488,7 +11493,7 @@ var Amplitude = function () {
   };
 }();
 
-/** 
+/**
  * Playback Speed Elements
  * @module visual/PlaybackSpeedElements
  */

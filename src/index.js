@@ -116,7 +116,7 @@ import PlayPauseElements from "./visual/playPauseElements.js";
  */
 import MetaDataElements from "./visual/metaDataElements.js";
 
-/** 
+/**
  * Playback Speed Elements
  * @module visual/PlaybackSpeedElements
  */
@@ -188,12 +188,12 @@ let Amplitude = (function() {
 
   /**
    * Sets the playback speed
-   * 
+   *
    * Public Accessor: Amplitude.setPlaybackSpeed( speed )
-   * 
+   *
    * @access public
    */
-  function setPlaybackSpeed( speed ) {
+  function setPlaybackSpeed(speed) {
     /*
       Increments are set in .5 We only accept values
       1, 1.5, 2
@@ -202,7 +202,7 @@ let Amplitude = (function() {
       1.5 -> 50% faster
       2 -> Twice as fast
     */
-    Core.setPlaybackSpeed( speed );
+    Core.setPlaybackSpeed(speed);
 
     /*
       Visually sync the playback speed.
@@ -353,7 +353,7 @@ let Amplitude = (function() {
    *
    * @access public
    */
-  function getDefaultPlaylistArt(){
+  function getDefaultPlaylistArt() {
     return config.default_playlist_art;
   }
 
@@ -377,9 +377,9 @@ let Amplitude = (function() {
    * @access public
    * @param {string} url - A string representing the URL of the new default playlist art.
    */
-   function setDefaultPlaylistArt(url){
-     config.default_plalist_art = url;
-   }
+  function setDefaultPlaylistArt(url) {
+    config.default_plalist_art = url;
+  }
 
   /**
    * Allows the user to get the percentage of the song played.
@@ -436,7 +436,7 @@ let Amplitude = (function() {
     /*
 			Ensures the percentage is a number and is between 0 and 100.
 		*/
-    if (typeof percentage == "number" && (percentage > 0 && percentage < 100)) {
+    if (typeof percentage == "number" && percentage > 0 && percentage < 100) {
       /*
 					Sets the current time of the song to the percentage.
 				*/
@@ -1071,7 +1071,7 @@ let Amplitude = (function() {
         Skip to the location in the song.
       */
       Core.skipToLocation(seconds);
-    } else {
+    } else if (songIndex != null) {
       /*
         Changes the song to where it's being skipped and then
         play the song.
@@ -1085,6 +1085,11 @@ let Amplitude = (function() {
       PlayPauseElements.syncGlobal();
       PlayPauseElements.syncSong();
 
+      /*
+        Skip to the location in the song.
+      */
+      Core.skipToLocation(seconds);
+    } else {
       /*
         Skip to the location in the song.
       */
@@ -1298,14 +1303,14 @@ let Amplitude = (function() {
    * @param {number} volumeLevel - A number between 1 and 100 as a percentage of
    * min to max for a volume level.
    */
-  function setVolume( volumeLevel ){
-    Core.setVolume( volumeLevel );
+  function setVolume(volumeLevel) {
+    Core.setVolume(volumeLevel);
   }
 
   /**
    * Gets the active volume.
    */
-  function getVolume(){
+  function getVolume() {
     return config.volume;
   }
 
