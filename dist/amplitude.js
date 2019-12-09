@@ -11217,6 +11217,11 @@ var Amplitude = function () {
       _core2.default.skipToLocation(seconds);
     } else {
       /*
+        Syncs all of the play pause buttons now that we've skipped.
+      */
+      _playPauseElements2.default.syncGlobal();
+      _playPauseElements2.default.syncSong();
+      /*
         Skip to the location in the song.
       */
       _core2.default.skipToLocation(seconds);
